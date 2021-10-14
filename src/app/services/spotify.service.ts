@@ -11,13 +11,21 @@ export class SpotifyService {
     console.log('Spotify Service Listo')
   }
 
-  getNewReleases() : Observable<Object>{
+  getNewReleases(): Observable<Object> {
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQCjqYcx8ZeBpWPghVGcRgav7UJeV2Hnk_xfC_v40QAFBPpDC_MR2RoMKaVN_opc3iX5TPuCQNJPwX5euVSa7EhLlCBfCOXR5fhDjDRtSSIbKGN3rNyT910dcJtigz0cTeaLA9c6EhXy124HqA'
+      'Authorization': 'Bearer BQCCkFS0G63pzFdWMteE4WdT8ahXUF1tS-AQTodForxUB2yw5yIl3zq0SOZO8BNCIkThVgUzKl7pdrZhYIb1x4vfnfB2MyFNvnKa5CNp0gq0tBeOzaUZPhrzkkNBP-Y8MbcrBYaGxZJ3mkjH_w'
     });
 
     return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers });
+  }
+
+  getArtista(termino: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQCCkFS0G63pzFdWMteE4WdT8ahXUF1tS-AQTodForxUB2yw5yIl3zq0SOZO8BNCIkThVgUzKl7pdrZhYIb1x4vfnfB2MyFNvnKa5CNp0gq0tBeOzaUZPhrzkkNBP-Y8MbcrBYaGxZJ3mkjH_w'
+    });
+
+    return this.http.get(`https://api.spotify.com/v1/search?q=${ termino }&type=artist`, { headers });
   }
 }
 
