@@ -13,7 +13,32 @@
             </a>
         </div>
         <div class="col text-end">
-            <button [routerLink]="['/search']" routerLinkActive="router-link-active"  class="btn btn-danger">Regresar</button>
+            <button [routerLink]="['/search']" routerLinkActive="router-link-active"
+                class="btn btn-danger">Regresar</button>
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="col">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Canción</th>
+                        <th scope="col">Vista Previa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <td><img [src]="track.album.images | noimage" class="img-thumb rounded mx-auto d-block" ></td>
+                        <td>{{ track.album.name }}</td>
+                        <td>{{ track.name }}</td>
+                        <td>
+                            <iframe [src]="track.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
